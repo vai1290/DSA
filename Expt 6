@@ -1,0 +1,33 @@
+clc;
+clear;
+close;
+
+function y = pskmod(x, M)
+    y = exp(%i*2*%pi*x/M);
+endfunction
+
+function y = qammod(x, M)
+    k = sqrt(M);
+    a = (2*modulo(x, k) - k + 1);
+    b = (2*floor(x/k) - k + 1);
+    y = a + %i*b;
+endfunction
+
+N = 4;
+M = 2^N;
+x = 0:M-1;
+
+z = pskmod(x, M);
+scf();
+subplot(1,2,1);
+scatter(real(z), imag(z), "fill");
+h = gca();
+h.data_bounds = [-1.5,1.5,-1.5,1.5];
+xtitle('M-ary PSK', 'In-phase', 'Quadrature');
+
+y = qammod(x, M);
+subplot(1,2,2);
+scatter(real(y), imag(y), "fill");
+h = gca();
+h.data_bounds = [-3.5,3.5,-3.5,3.5];
+xtitle('M-QAM', 'In-phase', 'Quadrature');

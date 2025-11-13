@@ -15,7 +15,7 @@ disp('Standard Deviation for individual Traffic Intersection is =',sigma);
 disp('Overall Mean=',MeanTotal);
 
 
-outout is:
+output is:
   "Mean for individual Traffic Intersection is ="
    54.625
    59.333333
